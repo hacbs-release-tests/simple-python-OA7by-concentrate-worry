@@ -1,0 +1,22 @@
+apiVersion: pipelinesascode.tekton.dev/v1alpha1
+kind: Repository
+metadata:
+  annotations:
+    appstudio.openshift.io/application: simple-python
+    appstudio.openshift.io/component: devfile-sample-python-basic
+    build.appstudio.openshift.io/build: "true"
+    build.appstudio.openshift.io/type: build
+    build.appstudio.openshift.io/version: "0.1"
+    pipelines.appstudio.openshift.io/type: build
+  creationTimestamp: null
+  name: devfile-sample-python-basic
+  namespace: managed-release-team-tenant
+spec:
+  git_provider:
+    secret:
+      key: github.token
+      name: pipelines-as-code-secret
+    webhook_secret:
+      key: https___github.com_scoheb_devfile-sample-python-basic
+      name: pipelines-as-code-webhooks-secret
+  url: https://github.com/scoheb/devfile-sample-python-basic
